@@ -129,7 +129,7 @@ for(k in 1:20){
                         yhat7=numeric(),yhat8=numeric(),yhat9=numeric(),yhat10=numeric(),yhat11=numeric(),yhat12=numeric())
   trueval = data.frame(y1=numeric(),y2=numeric(),y3=numeric(),y4=numeric(),y5=numeric(),y6=numeric(),
                        y7=numeric(),y8=numeric(),y9=numeric(),y10=numeric(),y11=numeric(),y12=numeric())
-  for(i in 1:n){
+  for(i in 1:m){
     inputs1[i,] = data1[i,1:4]
     x1 = as.numeric(inputs1[i,1:4])
     Xm = cbind(1*diag(20),x1[1]*diag(20),x1[2]*diag(20),x1[3]*diag(20),x1[4]*diag(20))
@@ -154,7 +154,7 @@ for(k in 1:20){
   #Now that we have all of our estimates, we can score them using our score function. This will allow us to
   #create a probability distribution over the observations
   error = data.frame(err = numeric())
-  for(i in 1:n){
+  for(i in 1:m){
     x = as.numeric(approx[i,57:68])
     x = x/sum(x)
     y = as.numeric(approx[i,69:80])
@@ -164,7 +164,7 @@ for(k in 1:20){
   
   #Now we throw away all the incorrect observations
   correctclass = data.frame(correct = numeric())
-  for(i in 1:n){
+  for(i in 1:m){
     y = as.numeric(approx[i,57:68])
     x = as.numeric(approx[i,69:80])
     if(max(y)!=0){
